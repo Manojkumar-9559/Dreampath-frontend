@@ -1,0 +1,329 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+div {
+  box-sizing: border-box;
+}
+
+
+.custom-height{
+  height: 75px;  
+}
+.custom-navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+ }
+.discover{
+ margin-top: 90px;
+}
+.sub{
+color: white;
+}
+.login{
+  color: #17a2b8  ;
+}
+.custom-p p {
+  font-size: x-small;
+}
+.custom-p h4  {
+  font-size: x-small;
+}
+.custom-p a{
+  font-size: x-small;
+}
+.hover-container1:hover{
+background-color:rgb(190, 44, 44);
+cursor: pointer;
+}
+.hover-container2:hover{
+  background-color:rgb(91, 34, 138);
+ 
+  cursor: pointer;
+  }
+  .institutions p{
+    font-size: x-small;
+  }
+.hover-container3:hover{
+    background-color:rgb(38, 62, 168);
+    cursor: pointer;
+    }
+    .career p{
+      font-size: x-small;
+    }
+.hover-container4:hover{
+      background-color:rgb(235, 55, 23);
+      cursor: pointer;
+      }
+
+.text{
+  font-size: x-small;
+  text-align: center;
+}
+.shaping{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 600px;
+  background-color: rgba(250, 248, 248, 0.932);
+  
+}
+.shaping1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;    
+  gap: 20px;
+}
+.shaping1 h6{
+  color: grey;
+  font-size: smaller;
+  margin-right: 20px;
+}
+.shaping h6{
+  color: grey;
+}
+.main{
+  background-color: rgb(255, 239, 239);
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.program{
+  height: 250px;
+  background-color: #17a2b8;
+  padding-top: 20px;
+}
+.main1{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+.forstudents{
+display: flex;
+align-items: center;
+gap: 30px;
+
+
+}
+.relative{
+  top: 130px;
+  position: absolute;
+  width: 1000px;
+  height: 670px;
+  background-color: rgb(255, 239, 239);
+ 
+}
+.program1 p{
+  font-size: small;
+}
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #f8b400;
+}
+.career h6{
+  color: grey;
+  font-size: small;
+}
+.iAm{
+  margin-top: 10%;
+}
+.hover-card1 {
+  position:relative;
+  transition: all 0.3s ease-in-out; /* Smooth animation */
+}
+.hover-card1:hover {
+  transform: scale(1.2);
+}
+.hover-card2:hover{
+  transform: scale(1.2) ;
+}
+.hover-card3:hover{
+  transform: scale(1.2) 
+}
+.goBack{
+  cursor:pointer;
+}
+.career-container {
+  height: 100vh;
+  width: 100vw;
+  background: #007bbd; /* Blue background */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.counseling-card {
+  width: 60%;
+  max-width: 800px;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.right-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.go-back {
+  cursor: pointer;
+}
+
+/* Signup.css */
+
+.border{
+  width: 160px;
+  height: 4px; 
+}
+
+.signup input{
+  
+  border-radius: 5px;
+}
+
+.signup span {  
+  align-self: flex-start;
+  margin-left: 85px;
+}
+.red{  
+  color: red;
+  align-self: self-start;
+  /* padding-left: 90px; */
+  display: block;
+    font-size: x-small;
+}
+.signup button{
+  border-radius: 5px;
+}
+.image{
+  background-color: rgb(191, 185, 185);
+}
+.login{
+  cursor: pointer;
+}
+.forgot{
+  cursor: pointer;
+}
+.text-danger{
+  align-self: flex-start;
+  font-size: x-small;
+}
+.otp-container {
+  display: flex;
+  gap: 10px; /* Space between boxes */
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.otp-box {
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.forgot-password-container {
+  /* background: linear-gradient(135deg, #007bff, #6610f2); */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: 400px;
+  border-radius: 10px;
+}
+
+input.form-control {
+  height: 45px;
+  font-size: 16px;
+}
+
+button {
+  height: 45px;
+  font-size: 16px;
+}
+
+.text-muted {
+  font-size: 14px;
+}
+
+/* educationLevelsContainer */
+
+.container {
+  width: 100vw; /* Full viewport width */
+  max-width: 100%; /* Prevents overflow */
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background (optional) */
+}
+
+/* Education level button styles */
+.education-level-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Colleges container */
+.colleges-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* College card styling */
+.college-card {
+  width: 100%;
+  max-width: 400px; /* Prevents card from being too wide */
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+/* Ensure images fit properly */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+.label{
+  align-self: self-start;
+  font-weight: bold;
+}
