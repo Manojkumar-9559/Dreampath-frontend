@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import LandingPage from './pages/LandingPage'
-import { Route, BrowserRouter,Routes} from 'react-router-dom'
+import { Route, HashRouter,Routes} from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import StudentProgram from './components/StudentProgram8-9';
 import StudentAfter10 from './components/StudentAfter10';
@@ -26,7 +26,7 @@ import EducationLevels from './components/EducationLevels';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path='/' element={  <LandingPage/>}/>
         <Route path='/home' element={<HomePage/>}/>
@@ -44,7 +44,7 @@ const App = () => {
         <Route path='/otpVerify' element={<OtpVerify/>}/>
         <Route path='/educationLevel' element={<EducationLevels/>}/>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
    
   )
 }

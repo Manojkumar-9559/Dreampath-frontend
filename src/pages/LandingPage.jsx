@@ -18,9 +18,12 @@ const LandingPage = () => {
 
         {/* Button Fade-In */}
         <Fade delay={700}>
-          <a href="/home" className=" btn bg-dark text-white  mt-3">
-            Get Started
-          </a>
+        import { Link } from "react-router-dom";
+
+<Link to="/home" className="btn bg-dark text-white mt-3">
+  Get Started
+</Link>
+
         </Fade>
       </div>
     </div>
