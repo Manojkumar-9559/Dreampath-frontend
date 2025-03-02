@@ -16,7 +16,7 @@ const HomePage = () => {
             <button className='bg-info m-3' onClick={()=>navigate('/signup')}>Get Started</button>
             <p className='m-2'>Career Assessment | Personalised Guidance | Profile Building | Virtual Internships|</p>
             <p> College Roadmap Planning | College Applications|Scholarship Hunt</p>
-            <img src='/assets/All-modified.png' alt='img' height={300} width={1000} className='mt-5'/>
+            <img src='assets/All-modified.png' alt='img' height={300} width={1000} className='mt-5'/>
         </div>
 
         <div className='d-flex bg-info justify-content-evenly ' style={{height:120}}>
