@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import OtpVerify from "./OtpVerify";
 import { signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../FireBase.config";
@@ -263,7 +263,7 @@ const SignupForm = () => {
         </span>
         <span className="d-flex gap-1">
           <h5>Already have an account?</h5>
-          <a href="/login">Sign in</a>
+          <Link to="/login">Sign in</Link>
         </span>
       </div>
 

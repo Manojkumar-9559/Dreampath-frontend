@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../AuthContext'
 
 const HomePage = () => {
@@ -16,7 +16,7 @@ const HomePage = () => {
             <button className='bg-info m-3' onClick={()=>navigate('/signup')}>Get Started</button>
             <p className='m-2'>Career Assessment | Personalised Guidance | Profile Building | Virtual Internships|</p>
             <p> College Roadmap Planning | College Applications|Scholarship Hunt</p>
-            <img src='assets/All-modified.png' alt='img' height={300} width={1000} className='mt-5'/>
+            <img src={`${process.env.PUBLIC_URL}/assets/All-modified.png`} alt='img' height={300} width={1000} className='mt-5'/>
         </div>
 
         <div className='d-flex bg-info justify-content-evenly ' style={{height:120}}>
@@ -159,7 +159,7 @@ const HomePage = () => {
                 help you discover your perfect career and choose<br/>
                 the right course and college.
                 </p>
-                <a href='/student10'>View Program Details</a>
+                <Link to='/student10'>View Program Details</Link>
             </div>
             <div>                
                 
@@ -169,7 +169,7 @@ const HomePage = () => {
                 help you discover your perfect career and choose<br/>
                 the best next step.
                 </p>
-                <a href='/after12th'>View Program Details</a>
+                <Link to='/after12th'>View Program Details</Link>
             </div>
             <div >                     
                 <h4 className='text-danger'>After Diploma</h4>
@@ -178,7 +178,7 @@ const HomePage = () => {
                      help you select the perfect stream and subjects<br/>
                       that align you to the right careers.
                 </p>
-                <a href='/student'>View Program Details</a>
+                <Link to='/student'>View Program Details</Link>
             </div>
                 </div>
                 <h6 className='mt-5 mb-3'>EXPERIENTIAL CAREER PROGRAMS</h6>
@@ -190,7 +190,7 @@ const HomePage = () => {
                 application development for admissions to Liberal<br/>
                 Arts programs.
                 </p>
-                <a href='/entranceExam'>View Program Details</a>
+                <Link to='/entranceExam'>View Program Details</Link>
             </div>
             <div > 
                                   
@@ -200,7 +200,7 @@ const HomePage = () => {
                 helps students experience different careers and<br/>
                 gives them practical exposure to these careers.
                 </p>
-                <a href='/afterGraduation'>View Program Details</a>
+                <Link to='/afterGraduation'>View Program Details</Link>
             </div>
             <div>           
                 <h4 className='text-danger'>After post Graduation</h4>             
@@ -208,7 +208,7 @@ const HomePage = () => {
                 you build the perfect applications for your target<br/>
                 universities.
                 </p>
-                <a href='/afterPostGradation'>View Program Details</a>
+                <Link to='/afterPostGradation'>View Program Details</Link>
             </div>
          
                 </div>

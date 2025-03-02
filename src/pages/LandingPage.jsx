@@ -9,7 +9,8 @@ const LandingPage = () => {
       <div className="text-center">
         {/* Logo Animation */}
         <Zoom duration={2000}>
-          <img src="assets/DreamPath-modified.png" alt="DreamPath Logo" className="logo" />
+        <img src={`${process.env.PUBLIC_URL}/assets/DreamPath-modified.png`} alt="DreamPath Logo" className="logo" />
+
         </Zoom>
 
         {/* Text Animation */}

@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap'
 import React, { useContext, useState } from 'react'
 import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 import { FaPhone } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../AuthContext'
 const Navbar = () => {
   const{isLoggedIn,logout
@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <div className='d-flex gap-2 custom-height  align-items-center justify-content-around border-1 bg-dark custom-navbar fixed-top  '>
         <div className='d-flex  align-items-center'>
-            <img src='/assets/DreamPath-modified.png' alt='icon' width={50} height={50}/>
+            <img src={`${process.env.PUBLIC_URL}/assets/DreamPath-modified.png`}  alt='icon' width={50} height={50}/>
             <h3 className='m-lg-2 login  ' style={{cursor:'pointer'}} onClick={()=>navigate('/home')}>DreamPath</h3>
         </div> 
         <div className='d-flex  align-items-center gap-2 sub'>
@@ -103,7 +103,7 @@ const Navbar = () => {
           Advanced assessment & personalised guidance to help you select
           <br /> the perfect stream and subjects that align you to the right careers.
         </p>
-        <a href="/student">View Program Details</a>
+        <Link to="/student">View Program Details</Link>
       </div>
 
       {/* Class 10-12 */}
@@ -116,7 +116,7 @@ const Navbar = () => {
           Expert guidance & 5-dimensional assessment to help you discover
           <br /> your perfect career and choose the right course and college.
         </p>
-        <a href="/student10">View Program Details</a>
+        <Link to="/student10">View Program Details</Link>
       </div>
 
       {/* College & Graduates */}
@@ -129,7 +129,7 @@ const Navbar = () => {
           5-dimensional assessment & superior guidance to help you discover
           <br /> your perfect career and choose the best next step.
         </p>
-        <a href="/student">View Program Details</a>
+        <Link to="/student">View Program Details</Link>
       </div>
     </div>
 
@@ -143,7 +143,7 @@ const Navbar = () => {
           Experiential, immersive self-paced program that helps students
           <br /> experience different careers and gives them practical exposure to these careers.
         </p>
-        <a href="/entranceExam">View Program Details</a>
+        <Link to="/entranceExam">View Program Details</Link>
       </div>
 
       {/* College Application Programs */}
@@ -154,7 +154,7 @@ const Navbar = () => {
           End-to-end overseas admissions guidance to help you build the
           <br /> perfect applications for your target universities.
         </p>
-        <a href="/afterGraduation">View Program Details</a>
+        <Link to="/afterGraduation">View Program Details</Link>
       </div>
 
       {/* Liberal Arts */}
@@ -164,7 +164,7 @@ const Navbar = () => {
           Comprehensive guidance and personalised application
           <br /> development for admissions to Liberal Arts programs.
         </p>
-        <a href="/afterPostGradation">View Program Details</a>
+        <Link to="/afterPostGradation">View Program Details</Link>
       </div>
     </div>
 
@@ -185,8 +185,8 @@ const Navbar = () => {
         <i className="fa fa-comment text-info me-2"></i> Send a Message
       </p>
       <div className="mt-4">
-        <a href="#" className="d-block text-dark mb-2">Success Stories</a>
-        <a href="#" className="d-block text-dark">About Us</a>
+        <Link to="#" className="d-block text-dark mb-2">Success Stories</Link>
+        <Link to="#" className="d-block text-dark">About Us</Link>
       </div>
       </div>     
       
@@ -204,19 +204,19 @@ const Navbar = () => {
               <h6 style={{color:'rgb(91, 34, 138)'}}>CAREER DEVELOPMENT PROGRAMS</h6>
               <h6>In School Career Guidance</h6>
               <p>State of the art assessment & end career guidance to help<br/>students discover their perfect career.</p>
-              <a href='#'>View Program Details</a>
+              <Link to='#'>View Program Details</Link>
             </div>
             <div>
             <div>
             <h6 style={{color:'rgb(91, 34, 138)'}}>CAREER ADVANCEMENT PROGRAMS</h6>
             <h6>Dream Training Program</h6>
             <p>Expert led training and comprehensive guidance sessions to help <br/>students excel at MUN conferences</p>
-            <a href='#'>View Program Details</a>
+            <Link to='/student'>View Program Details</Link>
             </div>
             <div>           
             <h6>DreamPath Talks</h6>
             <p>Expert led training and comprehensive guidance sessions to help <br/>students excel at MUN conferences</p>
-            <a href='#'>View Program Details</a>
+            <Link to='#'>View Program Details</Link>
             </div>
             </div>
                {/* Contact Section with Grey Background */}
@@ -236,8 +236,8 @@ const Navbar = () => {
         <i className="fa fa-comment text-info me-2"></i> Send a Message
       </p>
       <div className="mt-4">
-        <a href="#" className="d-block text-dark mb-2">Success Stories</a>
-        <a href="#" className="d-block text-dark">About Us</a>
+        <Link to="#" className="d-block text-dark mb-2">Success Stories</Link>
+        <Link to="#" className="d-block text-dark">About Us</Link>
       </div>
       </div>     
       
@@ -254,14 +254,14 @@ const Navbar = () => {
               <h6 style={{color:'rgb(38, 62, 168)'}}>CERTIFICATION PROGRAMS</h6>
               <h6>International Certified Career Coach (ICCC)</h6>
               <p>a 3-level credentialing program with emphasts on global best<br/>practices, experiential learning & state of the art tools.</p>
-              <a href='#'>View Program Details</a>
+              <Link to='#'>View Program Details</Link>
             </div>
             <div>
             <div>
             <h6 style={{color:'rgb(38, 62, 168)'}}>COLLABORATION</h6>
             <h6>DreamPath Partner Program</h6>
             <p>World-class career assessment platform & tools to help you scale up <br/>your career counselling practice.</p>
-            <a href='#'>View Program Details</a>
+            <Link to='#'>View Program Details</Link>
             </div>            
             </div>
             <div
@@ -280,8 +280,8 @@ const Navbar = () => {
         <i className="fa fa-comment text-info me-2"></i> Send a Message
       </p>
       <div className="mt-4">
-        <a href="#" className="d-block text-dark mb-2">Success Stories</a>
-        <a href="#" className="d-block text-dark">About Us</a>
+        <Link to="#" className="d-block text-dark mb-2">Success Stories</Link>
+        <Link to="#" className="d-block text-dark">About Us</Link>
       </div>
       </div>     
       
@@ -310,7 +310,7 @@ const Navbar = () => {
               <h6>Defense</h6>
               <h6>Design</h6>
               <h6>Economics</h6>             
-              <a href='#'>View Program Details</a>
+              <Link to='#'>View Program Details</Link>
             </div>
             <div>
             <div>
@@ -320,13 +320,13 @@ const Navbar = () => {
             <div className='d-flex gap-2  justify-content-evenly  ' >
               <div className='d-flex flex-column align-items-center'>
                 
-                <a href='https://www.mindler.com/blog/future-forward-mindlers-2024-recap/'>
+                <Link to='https://www.mindler.com/blog/future-forward-mindlers-2024-recap/'>
                 <img src='https://mindlerblog.imgix.net/2025/01/23112800/Recap.png?w=337&h=168&auto=compress' alt='img' style={{height:150,width:200}}/>
-                </a>
+                </Link>
               </div>
               <div className='d-flex flex-column align-items-center '>
               
-              <a href='https://www.mindler.com/blog/the-path-to-becoming-a-pro-mma-fighter-steps-challenges-and-career-milestones/'><img src='https://mindlerblog.imgix.net/2024/12/30114310/The-Path-to-Becoming-a-Pro-MMA-Fighter_Steps-Challenges-and-Career-Milestones_blog.png?w=337&h=168&auto=compress' alt='img' style={{height:150,width:200}}/></a>
+              <Link to='https://www.mindler.com/blog/the-path-to-becoming-a-pro-mma-fighter-steps-challenges-and-career-milestones/'><img src='https://mindlerblog.imgix.net/2024/12/30114310/The-Path-to-Becoming-a-Pro-MMA-Fighter_Steps-Challenges-and-Career-Milestones_blog.png?w=337&h=168&auto=compress' alt='img' style={{height:150,width:200}}/></Link>
               </div>
             </div>
             <div>
@@ -337,15 +337,15 @@ const Navbar = () => {
            
             <div className='d-flex justify-content-evenly '>
               <div>               
-                <a href='https://youtu.be/swWV7fxIKio'>
+                <Link to='https://youtu.be/swWV7fxIKio'>
                 <img src='https://www.mindler.com/vlog/wp-content/uploads/2021/07/Career-in-Product-Design-in-India-Everything-You-Need-to-Know.jpg' alt='img' style={{height:150,width:200}}/>
-                </a>
+                </Link>
               </div>
               <div>
               
-              <a href='https://youtu.be/swWV7fxIKio'>
+              <Link to='https://youtu.be/swWV7fxIKio'>
               <img src='https://mindlerimages.imgix.net/tinyimg/Liberal-Arts-The-New-Chapter-in-Indian-Education-2021_new.webp' alt='img' style={{height:150,width:200}}/>
-              </a>
+              </Link>
               </div>
             </div>   
             </div>       
@@ -368,8 +368,8 @@ const Navbar = () => {
         <i className="fa fa-comment text-info me-2"></i> Send a Message
       </p>
       <div className="mt-4">
-        <a href="#" className="d-block text-dark mb-2">Success Stories</a>
-        <a href="#" className="d-block text-dark">About Us</a>
+        <Link to="#" className="d-block text-dark mb-2">Success Stories</Link>
+        <Link to="#" className="d-block text-dark">About Us</Link>
       </div>
       </div>     
       
