@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Dreampath-frontend/static/css/main.333c6944.css",
-    "main.js": "/Dreampath-frontend/static/js/main.6e49f607.js",
+    "main.css": "/Dreampath-frontend/static/css/main.f65a5f24.css",
+    "main.js": "/Dreampath-frontend/static/js/main.fdac4877.js",
     "static/js/488.e75445ad.chunk.js": "/Dreampath-frontend/static/js/488.e75445ad.chunk.js",
     "static/media/slick.svg": "/Dreampath-frontend/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/Dreampath-frontend/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/Dreampath-frontend/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Dreampath-frontend/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Dreampath-frontend/index.html",
-    "main.333c6944.css.map": "/Dreampath-frontend/static/css/main.333c6944.css.map",
-    "main.6e49f607.js.map": "/Dreampath-frontend/static/js/main.6e49f607.js.map",
+    "main.f65a5f24.css.map": "/Dreampath-frontend/static/css/main.f65a5f24.css.map",
+    "main.fdac4877.js.map": "/Dreampath-frontend/static/js/main.fdac4877.js.map",
     "488.e75445ad.chunk.js.map": "/Dreampath-frontend/static/js/488.e75445ad.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.333c6944.css",
-    "static/js/main.6e49f607.js"
+    "static/css/main.f65a5f24.css",
+    "static/js/main.fdac4877.js"
   ]
 }
