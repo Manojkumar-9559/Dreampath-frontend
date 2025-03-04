@@ -5,15 +5,15 @@ import { FaPhone } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../AuthContext'
 const Navbar = () => {
-  const{isLoggedIn,logout
+  const{isLoggedIn,logout,educationLevels
   }=useContext(AuthContext)
   const navigate = useNavigate();
   const[forStudents,setForStudents]=useState(false)
-  const[forInstitutions,setForInstitutions]=useState(false)
+  const[forEntranceExams,setforEntranceExams]=useState(false)
   const[forcareer,setForCareer]=useState(false)
   const[resources,setResources]=useState(false)
   const onStudents =()=>{
-   setForInstitutions(false)
+   setforEntranceExams(false)
    setResources(false)
    setForCareer(false)
    setForStudents(true)    
@@ -22,25 +22,31 @@ const Navbar = () => {
    setForStudents(false)
    setForCareer(false)
    setResources(false)
-   setForInstitutions(true)
+   setforEntranceExams(true)
   }
   const CareerProfessionals = ()=>{
    setForStudents(false)
-   setForInstitutions(false)
+   setforEntranceExams(false)
    setResources(false)
    setForCareer(true)   
   }
   const ResourcesHandle = ()=>{
    setForStudents(false)
-   setForInstitutions(false)
+   setforEntranceExams(false)
    setForCareer(false)
    setResources(true)
   }
   const OnMouse = ()=>{
    setForStudents(false)
-   setForInstitutions(false)
+   setforEntranceExams(false)
    setResources(false)
    setForCareer(false) 
+  }
+
+  const handleEntranceExam = (id,name)=>{
+    console.log("id:",id);
+    navigate('/entranceExams',{state:{id,name}})
+    
   }
 
   return (
@@ -57,7 +63,7 @@ const Navbar = () => {
        <MdOutlineKeyboardArrowDown size={20} color=' #17a2b8'/>      
        </div>   
        <div className='d-flex align-items-center hover-container2' onMouseEnter={onInstitutions} >
-        <h6>For Institutions</h6>
+        <h6>For Entrance Exams</h6>
        <MdOutlineKeyboardArrowDown size={20} color=' #17a2b8'/>
        </div>
        <div className='d-flex align-items-center hover-container3' onMouseEnter={CareerProfessionals} >
@@ -196,56 +202,21 @@ const Navbar = () => {
   </div>
         )}
        
-       {/* Institutions */}
-       {
-        forInstitutions && (
-          <div  onMouseLeave={OnMouse} className=' institutions d-flex justify-content-around position-absolute bg-white shadow-lg py-4' style={{top:75,left:0, width:'100%'}}>
-            <div>
-              <h6 style={{color:'rgb(91, 34, 138)'}}>CAREER DEVELOPMENT PROGRAMS</h6>
-              <h6>In School Career Guidance</h6>
-              <p>State of the art assessment & end career guidance to help<br/>students discover their perfect career.</p>
-              <Link to='#'>View Program Details</Link>
-            </div>
-            <div>
-            <div>
-            <h6 style={{color:'rgb(91, 34, 138)'}}>CAREER ADVANCEMENT PROGRAMS</h6>
-            <h6>Dream Training Program</h6>
-            <p>Expert led training and comprehensive guidance sessions to help <br/>students excel at MUN conferences</p>
-            <Link to='/student'>View Program Details</Link>
-            </div>
-            <div>           
-            <h6>DreamPath Talks</h6>
-            <p>Expert led training and comprehensive guidance sessions to help <br/>students excel at MUN conferences</p>
-            <Link to='#'>View Program Details</Link>
-            </div>
-            </div>
-               {/* Contact Section with Grey Background */}
-    <div
-      className="d-flex flex-column "
-      style={{ backgroundColor: "grey", width: 300, height: "100%" }}
-    >
-       {/* Close Button */}
-     <div className='p-3'>
-      <i className="fa fa-times fs-4 text-white  close-icon " style={{marginLeft:250}} onClick={()=>setForInstitutions(false)}></i>
-    </div>   
-      <div className='  p-2' style={{marginLeft:40,marginBottom: 40}}>        
-      <p className="mb-2 text-dark mt-4">
-        <i className="fa fa-phone text-info me-2 "></i> +91 87449 87449
-      </p>
-      <p className="text-dark">
-        <i className="fa fa-comment text-info me-2"></i> Send a Message
-      </p>
-      <div className="mt-4">
-        <Link to="#" className="d-block text-dark mb-2">Success Stories</Link>
-        <Link to="#" className="d-block text-dark">About Us</Link>
+       {/* forEntranceExams */}
+       {forEntranceExams && educationLevels.length > 0 && (
+  <div 
+    onMouseLeave={OnMouse} 
+    className="institutions d-flex justify-content-around position-absolute bg-white shadow-lg py-4" 
+    style={{ top: 75, left: 0, width: "100%",cursor:'pointer' }}
+  >
+    {educationLevels.map((item, index) => (
+      <div key={index} className="education-item"  onClick={()=>handleEntranceExam(item.id,item.name)}>
+        {item.name} {/* Displaying education level */}
       </div>
-      </div>     
-      
-    </div>
-    
-          </div>
-        )
-       }
+    ))}
+  </div>
+)}
+
        {/* forcareer */}
        {
          forcareer && (
