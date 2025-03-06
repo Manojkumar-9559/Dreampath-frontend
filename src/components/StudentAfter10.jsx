@@ -14,6 +14,8 @@ const CareerGuidance = () => {
 
   // Fetch data for "After 10th"
   const fetchData = async () => {
+    console.log(`${apiurl}/user/data`);
+    
     try {
       const response = await axios.get(`${apiurl}/user/data`);
       console.log("Response:", response.data);
@@ -22,6 +24,7 @@ const CareerGuidance = () => {
       const after10thCategories = response.data.categories.filter(
         (category) => category.education_id === 1 // Assuming "After 10th" has id=1
       );
+      console.log(after10thCategories)
 
       setCategories(after10thCategories);
       setCourses(response.data.courses);

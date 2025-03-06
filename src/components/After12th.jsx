@@ -12,6 +12,7 @@ const CareerGuidanceAfter12th = () => {
   }, []);
 
   const fetchData = async () => {
+    console.log(`${apiurl}/user/data`);
     try {
       const response = await axios.get(`${apiurl}/user/data`);
       console.log("Response:", response.data);

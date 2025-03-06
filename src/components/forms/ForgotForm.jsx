@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AuthContext } from '../../AuthContext';
 
 const ForgotForm = () => {
     const navigate = useNavigate();
@@ -15,8 +16,7 @@ const ForgotForm = () => {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // API Base URL (Replace with your actual backend URL)
-    const API_URL = 'http://localhost:4000/user';
+    const{apiurl}=useContext(AuthContext);
 
     // 🔹 Step 1: Send OTP
    // Email validation function
@@ -41,8 +41,9 @@ const handleSendOtp = async () => {
 
   setLoading(true);
 
-  try {
-      const response = await axios.post(`${API_URL}/send-otp`, { email });
+  try {   
+    
+      const response = await axios.post(`${apiurl}/user/send-otp`, { email });
       setMessage(response.data.message); // Set success message from backend
       setStep(2); // Move to OTP input step
   } catch (error) {
@@ -61,7 +62,7 @@ const handleSendOtp = async () => {
     const handleVerifyOtp = async () => {
         setLoading(true);
         try {
-            const response = await axios.post(`${API_URL}/verify-otp`, { email, otp });
+            const response = await axios.post(`${apiurl}/user/verify-otp`, { email, otp });
             setMessage(response.data.message);
             setStep(3); // Move to Reset Password step
         } catch (error) {
@@ -74,7 +75,7 @@ const handleSendOtp = async () => {
     const handleResetPassword = async () => {
         setLoading(true);
         try {
-            const response = await axios.post(`${API_URL}/reset-password`, { email, newPassword });
+            const response = await axios.post(`${apiurl}/user/reset-password`, { email, newPassword });
             setMessage(response.data.message);
             setTimeout(() => navigate('/login'), 2000); // Redirect to login after success
         } catch (error) {
@@ -137,8 +138,30 @@ const handleSendOtp = async () => {
                             </button>
                         </>
                     )}
+                      <div className='d-flex align-items-center gap-2'>
+    <p className='mb-0' style={{ fontSize: '14px', color: '#555' }}>Didn't receive the OTP?</p>
+    <h6 
+        className='mb-0' 
+        style={{ 
+            cursor: 'pointer', 
+            color: '#d9534f', 
+            fontWeight: 'bold', 
+            fontSize: '14px', 
+            textDecoration: 'underline',
+            transition: 'color 0.2s ease-in-out' 
+        }}
+        onClick={handleSendOtp}
+        onMouseOver={(e) => e.target.style.color = '#c9302c'}
+        onMouseOut={(e) => e.target.style.color = '#d9534f'}
+    >
+        RESEND OTP
+    </h6>
+</div>
 
+                    
                     <p style={{ cursor: 'pointer' }} onClick={() => navigate('/login')}>Back to Login</p>
+                  
+                    
                 </div>
             </div>
             <Footer />

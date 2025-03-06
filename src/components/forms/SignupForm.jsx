@@ -236,7 +236,7 @@ const SignupForm = () => {
        name="phoneNumber"
        value={formData.phoneNumber}
        onChange={handleChange}
-       type="number"
+       type="phonenumber"
        className="w-100 mb-2"
        style={{ height: 40 }}
      />
