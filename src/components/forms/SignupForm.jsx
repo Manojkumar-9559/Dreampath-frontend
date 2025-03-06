@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,7 +8,10 @@ import OtpVerify from "./OtpVerify";
 import { signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../FireBase.config";
 import { RecaptchaVerifier } from "firebase/auth";
+import { AuthContext } from "../../AuthContext";
 const SignupForm = () => {
+   const{apiurl
+      }=useContext(AuthContext)
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     fullName: "",
@@ -118,10 +121,12 @@ const SignupForm = () => {
   }
 
   const submitHandler = async () => {    
+    console.log(`${apiurl}/user/register`);
+    
     setSubmitted(true) ;
     if (!validateForm()) return; // Stop submission if validation fails
     try {
-      const response = await axios.post('http://localhost:4000/user/register', formData);
+      const response = await axios.post(`${apiurl}/user/register`, formData);
   
       if (response.status === 201) {
         alert(response.data.message);

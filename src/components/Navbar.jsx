@@ -5,7 +5,7 @@ import { FaPhone } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../AuthContext'
 const Navbar = () => {
-  const{isLoggedIn,logout,educationLevels
+  const{isLoggedIn,logout,educationLevels,
   }=useContext(AuthContext)
   const navigate = useNavigate();
   const[forStudents,setForStudents]=useState(false)

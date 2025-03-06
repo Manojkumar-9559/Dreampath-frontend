@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../AuthContext";
 
 const CareerGuidance = () => {
   const [categories, setCategories] = useState([]);
   const [courses, setCourses] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+ const{apiurl
+    }=useContext(AuthContext)
   useEffect(() => {
     fetchData();
   }, []);
@@ -13,7 +15,7 @@ const CareerGuidance = () => {
   // Fetch data for "After 10th"
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/user/data");
+      const response = await axios.get(`${apiurl}/user/data`);
       console.log("Response:", response.data);
 
       // Filter categories that belong to "After 10th"

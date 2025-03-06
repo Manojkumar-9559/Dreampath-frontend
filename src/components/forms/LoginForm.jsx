@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../../AuthContext'
 const LoginForm = () => {
-    const{login}= useContext(AuthContext);
+    const{login,apiurl}= useContext(AuthContext);
     const navigate = useNavigate();
     const[formData,setFormData]=useState({
       email:'',
@@ -58,11 +58,13 @@ const LoginForm = () => {
         return isValid;
 
     }
+    console.log(`${apiurl}/user/login`,formData);
+    
     const onSubmitHandler = async()=>{
       setSubmitted(true);
       if (!validateForm()) return;
       try {
-        const response = await axios.post('http://localhost:4000/user/login',formData)
+        const response = await axios.post(`${apiurl}/user/login`,formData)
         if(response.status===200){
           alert(response.data.message)
           login();

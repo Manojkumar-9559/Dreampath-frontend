@@ -1,18 +1,19 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../AuthContext";
 
 const CareerGuidanceAfterDiploma = () => {
   const [categories, setCategories] = useState([]);
   const [careerPaths, setCareerPaths] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+  const {apiurl}=useContext(AuthContext);
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/user/data");
+      const response = await axios.get(`${apiurl}/user/data`);
       console.log("Response:", response.data);
 
       // Filter categories related to after diploma

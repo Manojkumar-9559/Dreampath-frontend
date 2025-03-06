@@ -1,8 +1,12 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthContext';
 
 const EntranceExams = () => {
+    const{apiurl
+    }=useContext(AuthContext)
+    console.log(apiurl)
   const [entranceExams, setEntranceExams] = useState([]);
   const [coachingCenters, setCoachingCenters] = useState([]);
   const location = useLocation();
@@ -11,11 +15,10 @@ const EntranceExams = () => {
   const educationLevel = location.state?.name;
 
   useEffect(() => {
-    const fetchData = async () => {
-      console.log(`Fetching: http://localhost:4000/user/getEntranceExams/${id}`);
+    const fetchData = async () => {   
 
       try {
-        const response = await axios.get(`http://localhost:4000/user/getEntranceExams/${id}`);
+        const response = await axios.get(`${apiurl}/user/getEntranceExams/${id}`);
         console.log("Response:", response.data);
 
         if (response.status === 200) {
@@ -41,7 +44,7 @@ const EntranceExams = () => {
       <h1 className="text-3xl text-center bg-info font-bold text-gray-800 mb-6">{educationLevel || "Entrance Exams"}</h1>
 
       {entranceExams.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl px-4" style={{marginTop:150}}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl px-4" >
           {entranceExams.map((exam, index) => (
             <div 
               key={index} 

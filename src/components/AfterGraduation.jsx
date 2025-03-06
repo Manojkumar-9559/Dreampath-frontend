@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../AuthContext";
 
 const AfterGraduation = () => {
   const [categories, setCategories] = useState([]);
   const [courses, setCourses] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
+  const {apiurl}=useContext(AuthContext);
   useEffect(() => {
     fetchData();
   }, []);
@@ -13,7 +14,7 @@ const AfterGraduation = () => {
   // Fetch data for "After Graduation"
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/user/data");
+      const response = await axios.get(`${apiurl}/user/data`);
       console.log("Response:", response.data);
 
       // Filter categories that belong to "After Graduation"
