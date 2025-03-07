@@ -25,6 +25,7 @@ import OtpVerify from './components/forms/OtpVerify';
 import EducationLevels from './components/EducationLevels';
 import EntranceExams from './components/EntranceExams';
 import CoachingCenters from './components/CoachingCenters';
+import ForJobDetails from './components/ForJobDetails';
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
         <Route path='/educationLevel' element={<EducationLevels/>}/>
         <Route path='/entranceExams' element={<EntranceExams/>}/>
         <Route path='/coachingCenters' element={<CoachingCenters/>}/>
+        <Route path='/forjobDetails/:educationLevel' element={<ForJobDetails/>}/>
       </Routes>
     </HashRouter>
    
