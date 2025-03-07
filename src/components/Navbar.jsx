@@ -1,17 +1,28 @@
 import { Button } from 'react-bootstrap'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 import { FaPhone } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../AuthContext'
+import axios from 'axios'
 const Navbar = () => {
-  const{isLoggedIn,logout,educationLevels,
+  const{isLoggedIn,logout,educationLevels,apiurl
   }=useContext(AuthContext)
   const navigate = useNavigate();
   const[forStudents,setForStudents]=useState(false)
   const[forEntranceExams,setforEntranceExams]=useState(false)
   const[forcareer,setForCareer]=useState(false)
+  const[educationLevelsjob,setEducationLevelsJob]=useState();
   const[resources,setResources]=useState(false)
+
+  useEffect(()=>{
+    const fetchData = async()=>{
+      const response =await axios.get(`${apiurl}/user/getDataForJob`)
+      console.log(response.data.educationLevels)
+      setEducationLevelsJob(response.data.educationLevels);
+    }
+    fetchData()
+  },[])
   const onStudents =()=>{
    setforEntranceExams(false)
    setResources(false)
@@ -218,49 +229,19 @@ const Navbar = () => {
 )}
 
        {/* forcareer */}
-       {
-         forcareer && (
-          <div  onMouseLeave={OnMouse} className=' career d-flex justify-content-around position-absolute bg-white shadow-lg py-4' style={{top:75,left:0, width:'100%'}}>
-            <div>
-              <h6 style={{color:'rgb(38, 62, 168)'}}>CERTIFICATION PROGRAMS</h6>
-              <h6>International Certified Career Coach (ICCC)</h6>
-              <p>a 3-level credentialing program with emphasts on global best<br/>practices, experiential learning & state of the art tools.</p>
-              <Link to='#'>View Program Details</Link>
-            </div>
-            <div>
-            <div>
-            <h6 style={{color:'rgb(38, 62, 168)'}}>COLLABORATION</h6>
-            <h6>DreamPath Partner Program</h6>
-            <p>World-class career assessment platform & tools to help you scale up <br/>your career counselling practice.</p>
-            <Link to='#'>View Program Details</Link>
-            </div>            
-            </div>
-            <div
-      className="d-flex flex-column h-100 "
-      style={{ backgroundColor: "grey", width: 300 }}
-    >
-       {/* Close Button */}
-     <div className='p-3'>
-      <i className="fa fa-times fs-4 text-white  close-icon " style={{marginLeft:250}} onClick={()=>setForCareer(false)}></i>
-    </div>   
-      <div className='  p-2' style={{marginLeft:40,marginBottom: 40}}>        
-      <p className="mb-2 text-dark mt-4">
-        <i className="fa fa-phone text-info me-2 "></i> +91 87449 87449
-      </p>
-      <p className="text-dark">
-        <i className="fa fa-comment text-info me-2"></i> Send a Message
-      </p>
-      <div className="mt-4">
-        <Link to="#" className="d-block text-dark mb-2">Success Stories</Link>
-        <Link to="#" className="d-block text-dark">About Us</Link>
-      </div>
-      </div>     
-      
-    </div>
-    
-          </div>
-        )
-       }
+       {forcareer && (
+  <div className="career-dropdown">
+    {educationLevelsjob && educationLevelsjob.length > 0 ? (
+      educationLevelsjob.map((item, index) => (
+        <div key={index} className="dropdown-item">
+          {item.education_level}
+        </div>
+      ))
+    ) : (
+      <p>No data</p>
+    )}
+  </div>
+)}
 
 {
          resources && (
