@@ -46,7 +46,7 @@ const EducationLevels = () => {
                     top: "20px",
                     right: "20px",
                     cursor: "pointer",
-                    fontSize: "2rem",  // Large size
+                    fontSize: "1rem",  // Large size
                     color: "black",  // Red color for better visibility
                     zIndex: 1000  // Keeps it on top
                 }}

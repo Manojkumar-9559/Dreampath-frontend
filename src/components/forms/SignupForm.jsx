@@ -262,10 +262,7 @@ const SignupForm = () => {
              </div> 
                
         
-        <span className="d-flex gap-1">
-          <i className="fa fa-phone fs-4 text-info" aria-hidden="true"></i>
-          <p className="text-info login">+911234567898</p>
-        </span>
+        
         <span className="d-flex gap-1">
           <h5>Already have an account?</h5>
           <Link to="/login">Sign in</Link>

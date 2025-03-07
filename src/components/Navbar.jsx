@@ -14,44 +14,49 @@ const Navbar = () => {
   const[forcareer,setForCareer]=useState(false)
   const[educationLevelsjob,setEducationLevelsJob]=useState();
   const[forResources,setForResources]=useState(false)
-  const[resources,setResources]= useState([]);
+  const[resources,setResources]= useState();
+  const[categories,setCategories]=useState();
   useEffect(()=>{
     const fetchData = async()=>{
       const response =await axios.get(`${apiurl}/user/getDataForJob`)
       console.log(response.data.educationLevels)
+      console.log("Resources:",response.data.resources)
       setEducationLevelsJob(response.data.educationLevels);
       setResources(response.data.resources);
+      const uniqueCategories =  [...new Set(response.data.resources.map(item => item.category_name))];
+      setCategories(uniqueCategories);     
+
     }
     fetchData()
-  },[])
+  },[])  
   const onStudents =()=>{
    setforEntranceExams(false)
-   setResources(false)
+   setForResources(false)
    setForCareer(false)
    setForStudents(true)    
   }
   const onInstitutions = ()=>{   
    setForStudents(false)
    setForCareer(false)
-   setResources(false)
+   setForResources(false)
    setforEntranceExams(true)
   }
   const CareerProfessionals = ()=>{
    setForStudents(false)
    setforEntranceExams(false)
-   setResources(false)
+   setForResources(false)
    setForCareer(true)   
   }
   const ResourcesHandle = ()=>{
    setForStudents(false)
    setforEntranceExams(false)
    setForCareer(false)
-   setResources(true)
+   setForResources(true)
   }
   const OnMouse = ()=>{
    setForStudents(false)
    setforEntranceExams(false)
-   setResources(false)
+   setForResources(false)
    setForCareer(false) 
   }
 
@@ -60,6 +65,11 @@ const Navbar = () => {
     navigate('/entranceExams',{state:{id,name}})
     
   }
+  const goToResources = (category)=>{
+   navigate(`/forresources/${category}`,{state:{resources}});
+  }
+
+
 
   return (
     <div className='d-flex gap-2 custom-height  align-items-center justify-content-around border-1 bg-dark custom-navbar fixed-top  '>
@@ -89,7 +99,6 @@ const Navbar = () => {
         
         </div>
        <div className='d-flex  align-items-center gap-2'>
-       <button className='bg-info border-1 rounded-2 h-50' onClick={()=>navigate('/getStarted')}>Get Started</button>
        {isLoggedIn?(
           <h6 className='login' onClick={logout}>Logout</h6>
        ):(
@@ -206,7 +215,7 @@ const Navbar = () => {
   
   <div 
   onMouseLeave={OnMouse} 
-  className="institutions d-flex justify-content-around position-absolute  shadow-lg py-4" 
+  className="institutions d-flex justify-content-around position-absolute bg-white shadow-lg py-4" 
   style={{ top: 75, left: 0, width: "100%",cursor:'pointer' }}
 >
 {educationLevelsjob && educationLevelsjob.length > 0 ? (
@@ -221,114 +230,51 @@ const Navbar = () => {
 </div>
 )}
 
-{forResources && (
+{forResources && resources && (
   <div
     onMouseLeave={OnMouse}
-    className="d-flex justify-content-around position-absolute bg-white shadow-lg py-4"
-    style={{ top: 75, left: 0, width: "100%" }}
+    className="institutions position-absolute bg-white shadow-lg p-4"
+    style={{
+      top: 75,
+      left: 0,
+      width: "100%",
+      borderRadius: "8px",
+      zIndex: 1000, // Ensure it appears above other elements
+    }}
   >
-    {/* Career Library Section */}
-    <div className="career">
-      <h4>Career Library</h4>
-      <p>
-        Everything you need to know, from colleges to scope,
-        <br />
-        for hundreds of careers.
-      </p>
+    <div className="container">
+      <h5 className="text-primary text-center mb-3 text-success">Explore Resources</h5>
 
-      {resources.length > 0 ? (
-        resources.map((resource) => (
-          <div key={resource.id}>
-            <h6>{resource.category_name}</h6>
-            <p style={{ fontSize: "14px", color: "gray" }}>
-              {resource.description}
-            </p>
-          </div>
-        ))
-      ) : (
-        <p>Loading...</p>
-      )}
-
-      <Link to="#">View Program Details</Link>
-    </div>
-
-    {/* Blog Section */}
-    <div>
-      <h4>Blog</h4>
-      <h6>- Expert-written articles on career trends, inspiration, and guidance.</h6>
-      <div className="d-flex gap-2 justify-content-evenly">
-        {resources.slice(0, 2).map((resource) => (
-          <div key={resource.id} className="d-flex flex-column align-items-center">
-            <Link to={resource.article_url}>
-              <img
-                src={resource.video_thumbnail}
-                alt="Blog Image"
-                style={{ height: 150, width: 200 }}
-              />
-            </Link>
-            <h6>{resource.article_title}</h6>
+      <div className="row">
+        {categories.map((item, index) => (
+          <div
+            key={index}
+            className="col-md-3 col-sm-6 col-12 d-flex align-items-center justify-content-center p-2"
+          >
+            <div
+              className="resource-item text-center p-3 rounded bg-info w-100"
+              style={{
+                border: "1px solid #ddd",
+                cursor: "pointer",
+                transition: "0.3s ease-in-out",
+              }}
+              onClick={()=>goToResources(item)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor = "#f8f9fa")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor = "transparent")
+              }
+            >
+              <h6 className="text-dark fw-bold">{item}</h6>
+            </div>
           </div>
         ))}
-      </div>
-    </div>
-
-    {/* Vlog Section */}
-    <div>
-      <h4>Vlog</h4>
-      <h6>- Audio-visual journal of careers by experts</h6>
-      <div className="d-flex justify-content-evenly">
-        {resources.slice(0, 2).map((resource) => (
-          <div key={resource.id}>
-            <Link to={resource.video_url}>
-              <img
-                src={resource.video_thumbnail}
-                alt="Vlog Image"
-                style={{ height: 150, width: 200 }}
-              />
-            </Link>
-            <h6>{resource.category_name}</h6>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* Sidebar Section */}
-    <div
-      className="d-flex flex-column h-full"
-      style={{ backgroundColor: "grey", width: 300 }}
-    >
-      {/* Close Button */}
-      <div className="p-3">
-        <i
-          className="fa fa-times fs-4 text-white close-icon"
-          style={{ marginLeft: 250 }}
-          onClick={() => setResources(false)}
-        ></i>
-      </div>
-
-      {/* Contact Info */}
-      <div className="p-2" style={{ marginLeft: 40, marginBottom: 40 }}>
-        <p className="mb-2 text-dark mt-4">
-          <i className="fa fa-phone text-info me-2"></i> +91 87449 87449
-        </p>
-        <p className="text-dark">
-          <i className="fa fa-comment text-info me-2"></i> Send a Message
-        </p>
-
-        <div className="mt-4">
-          <Link to="#" className="d-block text-dark mb-2">
-            Success Stories
-          </Link>
-          <Link to="#" className="d-block text-dark">
-            About Us
-          </Link>
-        </div>
       </div>
     </div>
   </div>
 )}
 
-      
       
 
     </div>

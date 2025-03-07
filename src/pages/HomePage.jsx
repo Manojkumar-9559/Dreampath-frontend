@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../AuthContext'
 
 const HomePage = () => {
-  
+  const{isLoggedIn}=useContext(AuthContext);
    const navigate = useNavigate();
   return (
     <div >
@@ -13,7 +13,14 @@ const HomePage = () => {
         <div className='d-flex flex-column align-items-center mt-5 '>
             <h1 className='discover'>Discover Your Perfect Career</h1>
             <p className='m-2'>Make smart decisions with our revolutionary AI enabled career guidance tools and expert career counsellors</p>
-            <button className='bg-info m-3' onClick={()=>navigate('/signup')}>Get Started</button>
+            {isLoggedIn?(
+              <button className='bg-info border-1 rounded-2 h-50'onClick={()=>navigate('/getStarted')} >Get Started</button>
+              
+            ):(
+                <button className='bg-info border-1 rounded-2 h-50'onClick={()=>navigate('/signup')} >Get Started</button>
+            
+
+            )}
             <p className='m-2'>Career Assessment | Personalised Guidance | Profile Building | Virtual Internships|</p>
             <p> College Roadmap Planning | College Applications|Scholarship Hunt</p>
             <img src={`${process.env.PUBLIC_URL}/assets/All-modified.png`} alt='img' height={300} width={1000} className='mt-5'/>

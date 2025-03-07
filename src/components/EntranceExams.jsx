@@ -8,11 +8,11 @@ const EntranceExams = () => {
   console.log(apiurl);
 
   const [entranceExams, setEntranceExams] = useState([]);
-  const [coachingCenters, setCoachingCenters] = useState([]);
+  const [coachingCenter, setCoachingCenter] = useState([]);
   const [loading, setLoading] = useState(true); // New loading state
   const location = useLocation();
   const id = location.state?.id;
-  const educationLevel = location.state?.name;
+  const name = location.state?.name;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +24,7 @@ const EntranceExams = () => {
 
         if (response.status === 200) {
           setEntranceExams(response.data.entranceExams || []);
-          setCoachingCenters(response.data.coachingCenters || []);
+          setCoachingCenter(response.data.coachingCenters || []);
         } else if (response.status === 404) {
           alert("Data not found");
         }
@@ -42,7 +42,7 @@ const EntranceExams = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
       <h1 className="text-3xl text-center bg-info font-bold text-gray-800 mb-6">
-        {educationLevel || "Entrance Exams"}
+        {name || "Entrance Exams"}
       </h1>
 
       {/* Loading Indicator */}
@@ -59,7 +59,7 @@ const EntranceExams = () => {
             </div>
           ))}
           <div className='text-center text-3xl'>
-            <Link state={{ coachingCenters }} to="/coachingCenters">
+            <Link state={{ coachingCenter,name }} to="/coachingCenters">
               <p style={{ fontSize: 20 }}>Click to view coaching centers</p>
             </Link>
           </div>

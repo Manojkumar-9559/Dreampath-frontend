@@ -1,19 +1,52 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { AuthContext } from '../AuthContext';
+import axios from 'axios';
 
 const CoachingCenters = () => {
   const location = useLocation();
-  const coachingCenters = location.state?.coachingCenters || [];
-
+  const { apiurl } = useContext(AuthContext);
+  const coachingCenter = location.state?.coachingCenter || [];
+  const id = location.state?.id || "";
+  const name = location.state?.name||"";
+  
+console.log("Received ID in CoachingCenters:", id);
   const locations = ['All', 'Chennai', 'Hyderabad', 'Bangalore'];
   const [selected, setSelected] = useState('All');
   const [search, setSearch] = useState('');
+  const [coachingCenters, setCoachingCenters] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (coachingCenter.length === 0 && id) {
+      const fetchData = async () => {
+        setLoading(true);
+        try {
+          const response = await axios.get(`${apiurl}/user/getEntranceExams/${id}`);
+          console.log("Response:", response.data);
+
+          if (response.status === 200) {
+            setCoachingCenters(response.data.coachingCenters || []);
+          } else if (response.status === 404) {
+            alert("Data not found");
+          }
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchData();
+    }
+  }, [id, apiurl]);
+
+  const activeCenters = coachingCenter.length > 0 ? coachingCenter : coachingCenters;
 
   // Apply filter by location
   const filteredCenters =
     selected === 'All'
-      ? coachingCenters
-      : coachingCenters.filter(center => center.location === selected);
+      ? activeCenters
+      : activeCenters.filter(center => center.location === selected);
 
   // Apply search on already filtered centers
   const searchCenters = search
@@ -27,23 +60,22 @@ const CoachingCenters = () => {
       
       {/* Fixed Header */}
       <h1 className="text-center bg-info text-3xl font-bold text-gray-800 fixed top-0 w-full py-4">
-        Coaching Centers
+        {name}
       </h1>
 
       {/* Search Box */}
       <div className='d-flex justify-content-center'>
-      <input
-        type="text"
-        placeholder="Search institute"
-        className="input"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Search institute"
+          className="input"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
       
-
       {/* Filter Buttons */}
-      <div className="d-flex mt-4" style={{marginLeft:20}}>
+      <div className="d-flex mt-4" style={{ marginLeft: 20 }}>
         {locations.map((item, index) => (
           <div
             key={index}
@@ -56,7 +88,9 @@ const CoachingCenters = () => {
       </div>
 
       {/* Display Coaching Centers */}
-      {searchCenters.length > 0 ? (
+      {loading ? (
+        <p className="text-gray-500 text-center text-lg mt-5">Loading...</p>
+      ) : searchCenters.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl px-4 mt-4">
           {searchCenters.map((center, index) => (
             <div key={index} className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl">

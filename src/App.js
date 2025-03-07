@@ -26,6 +26,8 @@ import EducationLevels from './components/EducationLevels';
 import EntranceExams from './components/EntranceExams';
 import CoachingCenters from './components/CoachingCenters';
 import ForJobDetails from './components/ForJobDetails';
+import Resources from './components/Resources';
+import Institutions from './components/Institutions';
 
 const App = () => {
   return (
@@ -49,6 +51,8 @@ const App = () => {
         <Route path='/entranceExams' element={<EntranceExams/>}/>
         <Route path='/coachingCenters' element={<CoachingCenters/>}/>
         <Route path='/forjobDetails/:educationLevel' element={<ForJobDetails/>}/>
+        <Route path='/forresources/:category' element={<Resources/>}/>
+        <Route path='/institutions' element={<Institutions/>}/>
       </Routes>
     </HashRouter>
    

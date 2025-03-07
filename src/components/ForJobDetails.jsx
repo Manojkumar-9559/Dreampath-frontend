@@ -13,9 +13,10 @@ const ForJobDetails = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${apiurl}/user/getDataBylevel/${educationLevel}`);
-                if (response.data.educationLevels) {
+                console.log(response.data.educationData)
+                if (response.data.educationData) {
                     // Filter the data to only show branches for the selected education level
-                    const filteredBranches = response.data.educationLevels.filter(
+                    const filteredBranches = response.data.educationData.filter(
                         (item) => item.education_level === educationLevel
                     );
                     setBranches(filteredBranches);
@@ -48,7 +49,7 @@ const ForJobDetails = () => {
                     </div>
                 ))
             ) : (
-                <p>No data found.</p>
+                <p className='text-center'>No data found.</p>
             )}
         </div>
     );
