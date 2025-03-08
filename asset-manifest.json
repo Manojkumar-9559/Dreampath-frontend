@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Dreampath-frontend/static/css/main.54fceb1c.css",
-    "main.js": "/Dreampath-frontend/static/js/main.39b9ffe4.js",
+    "main.js": "/Dreampath-frontend/static/js/main.abdb3d14.js",
     "static/js/488.e75445ad.chunk.js": "/Dreampath-frontend/static/js/488.e75445ad.chunk.js",
     "static/media/slick.svg": "/Dreampath-frontend/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/Dreampath-frontend/static/media/slick.a4e97f5a2a64f0ab1323.eot",
@@ -9,11 +9,11 @@
     "static/media/slick.woff": "/Dreampath-frontend/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Dreampath-frontend/index.html",
     "main.54fceb1c.css.map": "/Dreampath-frontend/static/css/main.54fceb1c.css.map",
-    "main.39b9ffe4.js.map": "/Dreampath-frontend/static/js/main.39b9ffe4.js.map",
+    "main.abdb3d14.js.map": "/Dreampath-frontend/static/js/main.abdb3d14.js.map",
     "488.e75445ad.chunk.js.map": "/Dreampath-frontend/static/js/488.e75445ad.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.54fceb1c.css",
-    "static/js/main.39b9ffe4.js"
+    "static/js/main.abdb3d14.js"
   ]
 }
