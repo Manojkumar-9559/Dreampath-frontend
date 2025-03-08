@@ -38,11 +38,11 @@ color: white;
   font-size: x-small;
 }
 .hover-container1:hover{
-background-color:rgb(190, 44, 44);
+color:rgb(237, 62, 14);
 cursor: pointer;
 }
 .hover-container2:hover{
-  background-color:rgb(91, 34, 138);
+  color:rgb(196, 230, 27);
  
   cursor: pointer;
   }
@@ -50,14 +50,16 @@ cursor: pointer;
     font-size: x-small;
   }
 .hover-container3:hover{
-    background-color:rgb(38, 62, 168);
+    color:rgb(218, 58, 109);
     cursor: pointer;
+  
     }
     .career p{
       font-size: x-small;
     }
 .hover-container4:hover{
-      background-color:rgb(235, 55, 23);
+    color:green;
+      
       cursor: pointer;
       }
 

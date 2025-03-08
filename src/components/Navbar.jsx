@@ -1,6 +1,5 @@
 import { Button } from 'react-bootstrap'
 import React, { useContext, useEffect, useState } from 'react'
-import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 import { FaPhone } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../AuthContext'
@@ -73,38 +72,38 @@ const Navbar = () => {
 
   return (
     <div className='d-flex gap-2 custom-height  align-items-center justify-content-around border-1 bg-dark custom-navbar fixed-top  '>
-        <div className='d-flex  align-items-center'>
+        <div className='d-flex  align-items-center' onClick={()=>navigate('/')}>
             <img src={`${process.env.PUBLIC_URL}/assets/DreamPath-modified.png`}  alt='icon' width={50} height={50}/>
-            <h3 className='m-lg-2 login  ' style={{cursor:'pointer'}} onClick={()=>navigate('/home')}>DreamPath</h3>
+            <h3 className='m-lg-2 login text-info ' style={{cursor:'pointer'}} onClick={()=>navigate('/home')}>DreamPath</h3>
         </div> 
-        <div className='d-flex  align-items-center gap-2 sub'>
+        <div className='d-flex  align-items-center gap-5 sub'>
         <div className='d-flex align-items-center hover-container1'
          onMouseEnter={onStudents}
                   >
-        <h6>For Students</h6>
-       <MdOutlineKeyboardArrowDown size={20} color=' #17a2b8'/>      
+        <h6>For Students</h6>      
        </div>   
        <div className='d-flex align-items-center hover-container2' onMouseEnter={onInstitutions} >
         <h6>For Entrance Exams</h6>
-       <MdOutlineKeyboardArrowDown size={20} color=' #17a2b8'/>
        </div>
        <div className='d-flex align-items-center hover-container3' onMouseEnter={CareerProfessionals} >
         <h6>For Career Professionals</h6>
-       <MdOutlineKeyboardArrowDown size={20} color=' #17a2b8'/>
        </div>
        <div className='d-flex align-items-center hover-container4'onMouseEnter={ResourcesHandle} >
         <h6>For Resources</h6>
-       <MdOutlineKeyboardArrowDown size={20} color=' #17a2b8'/>
        </div> 
         
         </div>
        <div className='d-flex  align-items-center gap-2'>
-       {isLoggedIn?(
-          <h6 className='login' onClick={logout}>Logout</h6>
-       ):(
-        <h6 className='login' onClick={()=>navigate('/login')}>Login</h6>
-       )
-       }
+       {isLoggedIn ? (
+  <button className="btn btn-danger px-4" onClick={logout}>
+    Logout
+  </button>
+) : (
+  <button className="btn btn-primary px-4" onClick={() => navigate('/login')}>
+    Login
+  </button>
+)}
+
        
        </div>
 
@@ -203,7 +202,7 @@ const Navbar = () => {
     style={{ top: 75, left: 0, width: "100%",cursor:'pointer' }}
   >
     {educationLevels.map((item, index) => (
-      <div key={index} className="education-item"  onClick={()=>handleEntranceExam(item.id,item.name)}>
+      <div key={index} className="education-item" style={{color:'rgb(168, 13, 150)'}}  onClick={()=>handleEntranceExam(item.id,item.name)}>
         {item.name} {/* Displaying education level */}
       </div>
     ))}

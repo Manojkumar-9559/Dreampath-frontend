@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 const Footer = () => {
   return (
     <footer className="footer">
@@ -28,14 +27,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter Subscription */}
-          <div className="footer-col">
-            <h5>Subscribe to Our Newsletter</h5>
-            <p>Stay updated with the latest career trends and opportunities.</p>
-            <form className="newsletter-form">
-              <input type="email" placeholder="Your Email" required />
-              <button type="submit">Subscribe</button>
-            </form>
+          {/* Image Section */}
+          <div className="footer-col image-section">
+            <h5>Explore Our Resources</h5>
+            <p>Check out our latest career development resources.</p>
+            <img src="https://tse3.mm.bing.net/th?id=OIP.zwBmpvg_HtLl5koOB63fFAHaE8&pid=Api&P=0&h=180" alt="Explore Resources" className="footer-image" />
           </div>
         </div>
 

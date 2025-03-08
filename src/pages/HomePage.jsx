@@ -226,10 +226,7 @@ const HomePage = () => {
 
             <h4>Take the first step towards career clarity!</h4>
             <h6>Discover your best-fit career with the world's most-advanced career assessment</h6>
-            <div className='d-flex mt-3 ' style={{width:450,height:40}}>
-                <input placeholder='Enter your email' style={{width:300}}/>
-                <button className='bg-dark text-white'>Take Free Demo</button>
-            </div>
+          
         </div>
         
        <Footer/>
