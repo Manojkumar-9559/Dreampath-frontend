@@ -11,10 +11,7 @@ const GetStarted = () => {
 
     const handleStudentClick = () => {
         setLoading(true); // Start loading
-        setTimeout(() => {
-            setLoading(false); // Stop loading after delay
-            setStudent(true); // Show student dropdown
-        }, 1000); // Simulated delay of 1 second
+        setStudent(true)       
     };
 
     return (
@@ -50,16 +47,7 @@ const GetStarted = () => {
 
             {/* Student Dropdown with Loading */}
             {student && (
-                <div className='bg-info position-absolute w-100' style={{ height: 700, top: 40 }}>
-                    <div className='d-flex justify-content-end mx-4 p-3 '>
-                        <i className="fa fa-times bg-white goBack" aria-hidden="true" onClick={() => setStudent(false)}></i>
-                    </div>
-
-                    {loading ? (
-                        <div className="d-flex justify-content-center align-items-center" style={{ height: '100%' }}>
-                            <p className="text-white text-center">Loading...</p> {/* Replace with spinner if needed */}
-                        </div>
-                    ) : (
+                <div className='bg-info position-absolute w-100' style={{ height: 700, top: 40 }}>                  
                         <div className='iAm'>
                             <div className='d-flex justify-content-center align-items-center gap-5' style={{ height: 230 }}>
                                 <div className='d-flex flex-column align-items-center justify-content-center hover-card1 bg-white'
@@ -71,7 +59,7 @@ const GetStarted = () => {
                                 </div>
                             </div>        
                         </div>
-                    )}
+                    
 
                     <p onClick={() => setStudent(false)} className='text-dark text-center goBack'>Go Back</p>
                 </div>

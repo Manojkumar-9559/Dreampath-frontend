@@ -1,21 +1,25 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
+import { AuthContext } from '../AuthContext';
 
 const EducationLevels = () => {
     const [educationLevels, setEducationLevels] = useState([]);
     const [selectedLevel, setSelectedLevel] = useState(null);
     const [colleges, setColleges] = useState([]);
     const navigate = useNavigate();
+    const{apiurl}=useContext(AuthContext)
 
     useEffect(() => {
         fetchEducationLevels();
+        fetchColleges();
     }, []);
 
     const fetchEducationLevels = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/user/data`);
+            console.log("link",`${apiurl}/user/data`);
+            const response = await axios.get(`${apiurl}/user/data`);
             console.log("Education Levels:", response.data.levels);
             setEducationLevels(response.data.levels);
         } catch (error) {
@@ -26,7 +30,7 @@ const EducationLevels = () => {
     const fetchColleges = async (levelId) => {
         setColleges([]);
         try {
-            const response = await axios.get(`http://localhost:4000/user/colleges/${levelId}`);
+            const response = await axios.get(`${apiurl}/user/colleges/${levelId}`);
             console.log("Colleges:", response.data.colleges);
             setColleges(response.data.data);
             setSelectedLevel(levelId);
